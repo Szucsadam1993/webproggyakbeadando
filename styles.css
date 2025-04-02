@@ -1,0 +1,18 @@
+/* Reszponzív menü */
+nav ul {
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    nav ul {
+        flex-direction: column;
+        space-y-2;
+    }
+}
+
+/* Galéria rács */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+}
