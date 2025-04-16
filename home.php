@@ -1,16 +1,15 @@
 <!-- Videók -->
-<div class="mb-8">
-    <div class="video-container mb-4">
-        <video controls>
+<div class="mb-8 flex space-x-4">
+    <div class="video-container w-1/2 h-48">
+        <video controls class="w-full h-full object-cover">
             <source src="<?= $config['site']['base_url'] ?>/public/videos/moonlight-promo.mp4" type="video/mp4">
             A böngésző nem támogatja a videó lejátszását.
         </video>
     </div>
-    <div class="video-container">
+    <div class="video-container w-1/2">
         <iframe src="https://www.youtube.com/embed/lFcSrYw-ARY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     </div>
 </div>
-
 <!-- Almenü -->
 <nav class="mb-8">
     <ul class="flex space-x-4 justify-center">
@@ -25,6 +24,12 @@
     <h2 class="text-2xl font-bold mb-4 text-pink-500">Bemutatkozás</h2>
     <p class="mb-2"><strong>Moonlight Szépségszalon – A Te ragyogásod a mi küldetésünk</strong></p>
     <p class="mb-2">Szeretettel várunk Budapest egyik legbájosabb utcájában, a Szépség utca 1. szám alatt, ahol a szépségápolás nem csupán szolgáltatás, hanem élmény. A Moonlight Szépségszalonban egy helyen találod meg mindazt, amire a teljes megújuláshoz szükséged van: profi műköröm, fodrász és kozmetikai szolgáltatásaink személyre szabottan, odafigyeléssel és magas szakmai színvonalon készülnek.</p>
+
+</section>
+
+<!-- Szolgáltatásaink szekció -->
+<section id="szolgaltatasaink" class="mb-12">
+    <h2 class="text-2xl font-bold mb-4 text-pink-500">Szolgáltatásaink</h2>
     <p class="mb-2"><strong>💅 Műköröm</strong><br>
     Tapasztalt körmösünk modern technikákkal és kreatív dizájnokkal dolgozik, hogy körmeid ne csak szépek, de tartósak is legyenek.<br>
     <strong>Szolgáltatásaink:</strong><br>
@@ -46,22 +51,16 @@
     - Hidratáló és anti-aging kezelések<br>
     - Szemöldökformázás és festés<br>
     - Szempillafestés, lifting</p>
-    <p class="mb-2"><strong>🕒 Nyitvatartás</strong><br>
-    Hétfő – Péntek: 9:00 – 19:00<br>
-    Szombat: 9:00 – 14:00<br>
-    Vasárnap: Zárva</p>
-    <p>Lépj be hozzánk, és tapasztald meg a Moonlight Szépségszalon varázslatos világát! Foglalj időpontot még ma, és add meg magadnak azt a törődést, amit megérdemelsz!</p>
-</section>
-
-<!-- Szolgáltatásaink szekció -->
-<section id="szolgaltatasaink" class="mb-12">
-    <h2 class="text-2xl font-bold mb-4 text-pink-500">Szolgáltatásaink</h2>
-    <p>Ebben a szekcióban részletezheted a szolgáltatásokat, ha további tartalommal szeretnéd kiegészíteni.</p>
 </section>
 
 <!-- Kapcsolat szekció -->
 <section id="kapcsolat">
     <h2 class="text-2xl font-bold mb-4 text-pink-500">Kapcsolat</h2>
+    <p class="mb-2"><strong>🕒 Nyitvatartás</strong><br>
+    Hétfő – Péntek: 9:00 – 19:00<br>
+    Szombat: 9:00 – 14:00<br>
+    Vasárnap: Zárva</p>
+    <p>Lépj be hozzánk, és tapasztald meg a Moonlight Szépségszalon varázslatos világát! Foglalj időpontot még ma, és add meg magadnak azt a törődést, amit megérdemelsz!</p>
     <p class="mb-4">Látogass el hozzánk: <?= $config['site']['address'] ?></p>
     <div id="map" class="w-full h-64 mb-4"></div>
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
