@@ -29,16 +29,16 @@ session_start();
         <ul class="flex space-x-4">
             <?php foreach ($config['menu'] as $key => $menuItem): ?>
                 <?php if ($menuItem['visible']): ?>
-                    <li class="relative group">
+                    <li class="relative dropdown">
                         <?php if ($key === 'home'): ?>
                             <a href="<?= $config['site']['base_url'] ?>/index.php?page=<?= $key ?>" class="hover:underline <?= (($_GET['page'] ?? 'home') === $key) ? 'font-bold' : '' ?>">
                                 <?= $menuItem['title'] ?>
                             </a>
                             <!-- Lenyíló menü -->
-                            <ul class="absolute hidden group-hover:block bg-pink-400 text-white p-2 mt-1 space-y-2 rounded shadow-lg">
-                                <li><a href="#bemutatkozas" class="hover:underline scroll-smooth">Bemutatkozás</a></li>
-                                <li><a href="#szolgaltatasaink" class="hover:underline scroll-smooth">Szolgáltatásaink</a></li>
-                                <li><a href="#kapcsolat" class="hover:underline scroll-smooth">Kapcsolat</a></li>
+                            <ul class="absolute hidden dropdown-menu bg-pink-400 text-white p-2 mt-0 space-y-2 rounded shadow-lg w-48">
+                                <li><a href="#bemutatkozas" class="block hover:underline scroll-smooth">Bemutatkozás</a></li>
+                                <li><a href="#szolgaltatasaink" class="block hover:underline scroll-smooth">Szolgáltatásaink</a></li>
+                                <li><a href="#kapcsolat" class="block hover:underline scroll-smooth">Kapcsolat</a></li>
                             </ul>
                         <?php elseif ($key === 'login'): ?>
                             <a href="#" onclick="openModal()" class="hover:underline <?= (($_GET['page'] ?? 'home') === $key) ? 'font-bold' : '' ?>">
@@ -60,7 +60,7 @@ session_start();
         <div class="bg-white p-6 rounded-lg shadow-lg w-full max-w-md">
             <div class="flex justify-between items-center mb-4">
                 <h2 id="modalTitle" class="text-xl font-bold">Bejelentkezés</h2>
-                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">&times;</button>
+                <button onclick="closeModal()" class="text-gray-500 hover:text-gray-700">×</button>
             </div>
             <!-- Bejelentkezési űrlap -->
             <div id="loginForm">
@@ -141,3 +141,14 @@ session_start();
             }
         });
     </script>
+
+    <!-- CSS a lenyíló menü javításához -->
+    <style>
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        .dropdown-menu {
+            top: 100%; /* Közvetlenül a "Főoldal" link alatt jelenik meg */
+            left: 0;
+        }
+    </style>

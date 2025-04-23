@@ -1,30 +1,24 @@
 <!-- Videók -->
-<div class="mb-8 flex space-x-4">
-    <div class="video-container w-1/2 h-48">
-        <video controls class="w-full h-full object-cover">
+<div class="mt-16 mb-8 flex space-x-4">
+    <div class="video-container max-w-sm max-h-40">
+        <video controls allowfullscreen>
             <source src="<?= $config['site']['base_url'] ?>/public/videos/moonlight-promo.mp4" type="video/mp4">
             A böngésző nem támogatja a videó lejátszását.
         </video>
     </div>
-    <div class="video-container w-1/2">
-        <iframe src="https://www.youtube.com/embed/lFcSrYw-ARY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <div class="video-container max-w-sm max-h-40">
+        <iframe id="youtube-video" src="https://www.youtube.com/embed/lFcSrYw-ARY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen" allowfullscreen></iframe>
     </div>
 </div>
-<!-- Almenü -->
-<nav class="mb-8">
-    <ul class="flex space-x-4 justify-center">
-        <li><a href="#bemutatkozas" class="text-pink-500 hover:underline scroll-smooth">Bemutatkozás</a></li>
-        <li><a href="#szolgaltatasaink" class="text-pink-500 hover:underline scroll-smooth">Szolgáltatásaink</a></li>
-        <li><a href="#kapcsolat" class="text-pink-500 hover:underline scroll-smooth">Kapcsolat</a></li>
-    </ul>
-</nav>
 
 <!-- Bemutatkozás szekció -->
 <section id="bemutatkozas" class="mb-12">
     <h2 class="text-2xl font-bold mb-4 text-pink-500">Bemutatkozás</h2>
     <p class="mb-2"><strong>Moonlight Szépségszalon – A Te ragyogásod a mi küldetésünk</strong></p>
     <p class="mb-2">Szeretettel várunk Budapest egyik legbájosabb utcájában, a Szépség utca 1. szám alatt, ahol a szépségápolás nem csupán szolgáltatás, hanem élmény. A Moonlight Szépségszalonban egy helyen találod meg mindazt, amire a teljes megújuláshoz szükséged van: profi műköröm, fodrász és kozmetikai szolgáltatásaink személyre szabottan, odafigyeléssel és magas szakmai színvonalon készülnek.</p>
-
+    <div class="flex justify-center mt-6">
+        <img src="<?= $config['site']['base_url'] ?>/public/images/logo.png" alt="Moonlight Szépségszalon Logo" class="h-48">
+    </div>
 </section>
 
 <!-- Szolgáltatásaink szekció -->
@@ -76,8 +70,9 @@
     </script>
 </section>
 
-<!-- Görgetés simítása -->
+<!-- Görgetés simítása és YouTube videó elrejtése -->
 <script>
+    // Görgetés simítása
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -86,4 +81,27 @@
             });
         });
     });
+
+    // YouTube videó elrejtése a modális ablak megjelenésekor
+    const loginModal = document.getElementById('loginModal');
+    const youtubeVideo = document.getElementById('youtube-video');
+
+    if (loginModal && youtubeVideo) {
+        // Modális ablak megnyitásakor
+        document.querySelector('a[onclick="openModal()"]').addEventListener('click', function() {
+            youtubeVideo.style.display = 'none';
+        });
+
+        // Modális ablak bezárásakor
+        loginModal.querySelector('button[onclick="closeModal()"]').addEventListener('click', function() {
+            youtubeVideo.style.display = 'block';
+        });
+
+        // Ha a háttérre kattintva zárjuk be a modális ablakot
+        loginModal.addEventListener('click', function(e) {
+            if (e.target === loginModal) {
+                youtubeVideo.style.display = 'block';
+            }
+        });
+    }
 </script>

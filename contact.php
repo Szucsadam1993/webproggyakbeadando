@@ -22,4 +22,3 @@
         <button type="submit" class="bg-pink-500 text-white p-2 rounded hover:bg-pink-600">Küldés</button>
     </form>
 </section>
-?>

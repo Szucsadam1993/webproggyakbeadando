@@ -3,11 +3,57 @@ nav ul {
     flex-wrap: wrap;
 }
 
+nav {
+    position: relative;
+    z-index: 50; /* A menü legyen felül */
+}
+
+/* Közepes képernyőméret */
 @media (max-width: 640px) {
     nav ul {
         flex-direction: column;
-        space-y-2;
+        space-y: 2;
     }
+}
+
+/* Videó konténer */
+.video-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    z-index: 10; /* Alacsonyabb z-index a videóknak */
+}
+
+.video-container video,
+.video-container iframe {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Biztosítja, hogy a videó teljes tartalma látható legyen */
+}
+
+/* Explicit z-index az iframe-re */
+.video-container iframe {
+    z-index: 9; /* Biztosítjuk, hogy az iframe a modális ablak alatt legyen */
+}
+
+/* Teljes képernyős mód engedélyezése */
+.video-container video[controls],
+.video-container iframe {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+/* Reszponzív videó méretek kisebb képernyőkön */
+@media (max-width: 768px) {
+    .video-container {
+        max-height: 120px; /* Kisebb maximális magasság kisebb képernyőkön */
+    }
+}
+
+/* Modális ablak (belépési kisablak) */
+#loginModal {
+    position: fixed;
+    z-index: 100; /* Magas z-index, hogy a videók fölött legyen */
 }
 
 /* Galéria rács */
