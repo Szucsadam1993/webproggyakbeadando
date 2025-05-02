@@ -21,7 +21,9 @@ session_start();
         </div>
         <?php if (isset($_SESSION['user'])): ?>
             <div class="text-right">
-                <p class="text-sm"><?= htmlspecialchars($_SESSION['user']['username']) ?> <span class="font-bold">Bejelentkezve</span></p>
+                <p class="text-sm">
+                    Bejelentkezett: <?= htmlspecialchars($_SESSION['user']['lastname']) ?> <?= htmlspecialchars($_SESSION['user']['firstname']) ?> (<?= htmlspecialchars($_SESSION['user']['username']) ?>)
+                </p>
             </div>
         <?php endif; ?>
     </header>

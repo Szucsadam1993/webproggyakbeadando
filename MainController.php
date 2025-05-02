@@ -163,7 +163,6 @@ class MainController {
 
     private function handleContact() {
         $error = '';
-        $success = '';
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $name = $_POST['name'] ?? '';
             $email = $_POST['email'] ?? '';
@@ -172,12 +171,13 @@ class MainController {
                 $sender = isset($_SESSION['user']) ? $_SESSION['user']['username'] : 'Vendég';
                 $stmt = $this->db->prepare("INSERT INTO messages (name, email, message, sender) VALUES (?, ?, ?, ?)");
                 $stmt->execute([$name, $email, $message, $sender]);
-                $success = 'Üzenet elküldve!';
+                $this->loadView('confirmation', ['name' => $name, 'email' => $email, 'message' => $message, 'sender' => $sender]);
+                return;
             } else {
                 $error = 'Kérjük, töltse ki az összes mezőt helyesen!';
             }
         }
-        $this->loadView('contact', ['error' => $error, 'success' => $success]);
+        $this->loadView('contact', ['error' => $error]);
     }
 
     private function handleMessages() {
